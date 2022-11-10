@@ -1,5 +1,5 @@
 CREATE TABLE Adress(
-   Id_Adress COUNTER,
+   Id_Adress INT,
    Number INT,
    Road VARCHAR(50),
    City VARCHAR(50),
@@ -9,16 +9,15 @@ CREATE TABLE Adress(
 );
 
 CREATE TABLE Music(
-   Id_Music COUNTER,
+   Id_Music INT,
    Style VARCHAR(50),
    Djs VARCHAR(50),
    PRIMARY KEY(Id_Music)
 );
 
 CREATE TABLE Activity(
-   Id_Activity COUNTER,
+   Id_Activity INT,
    Name VARCHAR(50),
-   Type VARCHAR(50),
    Capacity INT,
    Id_Adress INT NOT NULL,
    PRIMARY KEY(Id_Activity),
@@ -26,14 +25,14 @@ CREATE TABLE Activity(
 );
 
 CREATE TABLE Drinks(
-   Id_Drinks COUNTER,
+   Id_Drinks INT,
    Name VARCHAR(50),
    Price INT,
    PRIMARY KEY(Id_Drinks)
 );
 
 CREATE TABLE Club(
-   Id_Club COUNTER,
+   Id_Club INT,
    Name VARCHAR(50),
    Capacity INT,
    Id_Adress INT NOT NULL,
@@ -42,9 +41,10 @@ CREATE TABLE Club(
 );
 
 CREATE TABLE Event(
-   Id_Event COUNTER,
+   Id_Event INT,
    Name VARCHAR(50),
-   Time_event DATETIME,
+   Day_event DATE,
+   Hour_event TIME,
    Price INT,
    Id_Activity INT,
    Id_Club INT,
