@@ -1,9 +1,9 @@
 CREATE TABLE Adress(
    Id_Adress INT,
-   Number INT,
+   Number_road INT,
    Road VARCHAR(50),
-   City VARCHAR(50),
    Postal_code INT,
+   City VARCHAR(50),
    Country VARCHAR(50),
    PRIMARY KEY(Id_Adress)
 );
@@ -15,72 +15,50 @@ CREATE TABLE Music(
    PRIMARY KEY(Id_Music)
 );
 
-CREATE TABLE Activity(
-   Id_Activity INT,
-   Name VARCHAR(50),
-   Capacity INT,
-   Id_Adress INT NOT NULL,
-   PRIMARY KEY(Id_Activity),
-   FOREIGN KEY(Id_Adress) REFERENCES Adress(Id_Adress)
-);
-
 CREATE TABLE Drinks(
    Id_Drinks INT,
-   Name VARCHAR(50),
-   Price INT,
+   Name_drink VARCHAR(50),
+   Volume DECIMAL(15,2),
+   Ingredients VARCHAR(50),
+   Alcohol BOOLEAN,
+   Price DECIMAL(15,2),
    PRIMARY KEY(Id_Drinks)
 );
 
-CREATE TABLE Club(
-   Id_Club INT,
-   Name VARCHAR(50),
+CREATE TABLE Place(
+   Id_Place INT,
+   Name_place VARCHAR(50),
+   Type_place VARCHAR(50),
    Capacity INT,
    Id_Adress INT NOT NULL,
-   PRIMARY KEY(Id_Club),
+   PRIMARY KEY(Id_Place),
    FOREIGN KEY(Id_Adress) REFERENCES Adress(Id_Adress)
 );
 
-CREATE TABLE Event(
-   Id_Event INT,
-   Name VARCHAR(50),
-   Day_event DATE,
-   Hour_event TIME,
-   Price INT,
-   Id_Activity INT,
-   Id_Club INT,
-   PRIMARY KEY(Id_Event),
-   FOREIGN KEY(Id_Activity) REFERENCES Activity(Id_Activity),
-   FOREIGN KEY(Id_Club) REFERENCES Club(Id_Club)
+CREATE TABLE Event_schedule(
+   Id_Event_schedule INT,
+   Name_event VARCHAR(50),
+   Superviser VARCHAR(50),
+   Start_time DATETIME,
+   End_time DATETIME,
+   Price DECIMAL(15,2),
+   Id_Place INT NOT NULL,
+   PRIMARY KEY(Id_Event_schedule),
+   FOREIGN KEY(Id_Place) REFERENCES Place(Id_Place)
 );
 
-CREATE TABLE Played(
+CREATE TABLE Is_played(
+   Id_Event_schedule INT,
    Id_Music INT,
-   Id_Activity INT,
-   PRIMARY KEY(Id_Music, Id_Activity),
-   FOREIGN KEY(Id_Music) REFERENCES Music(Id_Music),
-   FOREIGN KEY(Id_Activity) REFERENCES Activity(Id_Activity)
-);
-
-CREATE TABLE Set_(
-   Id_Club INT,
-   Id_Music INT,
-   PRIMARY KEY(Id_Club, Id_Music),
-   FOREIGN KEY(Id_Club) REFERENCES Club(Id_Club),
+   PRIMARY KEY(Id_Event_schedule, Id_Music),
+   FOREIGN KEY(Id_Event_schedule) REFERENCES Event_schedule(Id_Event_schedule),
    FOREIGN KEY(Id_Music) REFERENCES Music(Id_Music)
 );
 
-CREATE TABLE Drink(
-   Id_Club INT,
+CREATE TABLE Is_drunk(
+   Id_Event_schedule INT,
    Id_Drinks INT,
-   PRIMARY KEY(Id_Club, Id_Drinks),
-   FOREIGN KEY(Id_Club) REFERENCES Club(Id_Club),
-   FOREIGN KEY(Id_Drinks) REFERENCES Drinks(Id_Drinks)
-);
-
-CREATE TABLE Drink_(
-   Id_Activity INT,
-   Id_Drinks INT,
-   PRIMARY KEY(Id_Activity, Id_Drinks),
-   FOREIGN KEY(Id_Activity) REFERENCES Activity(Id_Activity),
+   PRIMARY KEY(Id_Event_schedule, Id_Drinks),
+   FOREIGN KEY(Id_Event_schedule) REFERENCES Event_schedule(Id_Event_schedule),
    FOREIGN KEY(Id_Drinks) REFERENCES Drinks(Id_Drinks)
 );
