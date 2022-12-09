@@ -1,12 +1,13 @@
-CREATE TABLE Adress(
-   Id_Adress INT,
-   Number_road INT,
-   Road VARCHAR(50),
-   Postal_code INT,
-   City VARCHAR(50),
-   Country VARCHAR(50),
-   PRIMARY KEY(Id_Adress)
-);
+CREATE DATABASE if not exists EBB;
+USE EBB;
+
+DROP TABLE if exists Is_played;
+DROP TABLE if exists Is_drunk;
+DROP TABLE if exists Event_schedule;
+DROP TABLE if exists Place;
+DROP TABLE if exists Music;
+DROP TABLE if exists Drinks;
+DROP TABLE if exists Login;
 
 CREATE TABLE Music(
    Id_Music INT,
@@ -30,9 +31,14 @@ CREATE TABLE Place(
    Name_place VARCHAR(50),
    Type_place VARCHAR(50),
    Capacity INT,
-   Id_Adress INT NOT NULL,
-   PRIMARY KEY(Id_Place),
-   FOREIGN KEY(Id_Adress) REFERENCES Adress(Id_Adress)
+   City_place varchar(100),
+   country_place varchar(100),
+   PRIMARY KEY(Id_Place)
+);
+
+CREATE TABLE Login(
+    username VARCHAR(50),
+    password VARCHAR(50)
 );
 
 CREATE TABLE Event_schedule(
@@ -62,3 +68,4 @@ CREATE TABLE Is_drunk(
    FOREIGN KEY(Id_Event_schedule) REFERENCES Event_schedule(Id_Event_schedule),
    FOREIGN KEY(Id_Drinks) REFERENCES Drinks(Id_Drinks)
 );
+

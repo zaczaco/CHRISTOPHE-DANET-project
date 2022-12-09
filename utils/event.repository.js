@@ -74,7 +74,7 @@ module.exports = {
     async addOneEvent_schedule(PlacesId){ 
         try {
             let conn = await pool.getConnection();
-            let sql = "INSERT INTO Event_schedule (Event_schedule_id, Event_schedule_Places) VALUES (NULL, ?) ";
+            let sql = "INSERT INTO Event_schedule (Event_schedule_id, Event_schedule_Places, Event_schedule_Drinks, Event_schedule_Music) VALUES (NULL, ?) ";
             const [okPacket, fields] = await conn.execute(sql, [ PlacesId ]); // affectedRows, insertId
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
@@ -85,7 +85,21 @@ module.exports = {
             throw err; 
         }
     },
-
+    async editOneEvent_schedule(carId, carBrand, carName, carBaseprice, carIsfancy, carRealprice){ 
+        try {
+            let conn = await pool.getConnection();
+            let sql = "UPDATE cars SET car_brand=?, car_name=?, car_baseprice=?, car_isFancy=?, car_realPrice=? WHERE car_id=? "; // TODO: named parameters? :something
+            const [okPacket, fields] = await conn.execute(sql, 
+                        [carBrand, carName, carBaseprice, carIsfancy, carRealprice, carId]);
+            conn.release();
+            console.log("UPDATE "+JSON.stringify(okPacket));
+            return okPacket.affectedRows;
+        }
+        catch (err) {
+            console.log(err);
+            throw err; 
+        }
+    }
 
 
 
