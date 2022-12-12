@@ -104,7 +104,7 @@ INSERT INTO Is_drunk values( 9, 2);
 INSERT INTO Is_drunk values( 9, 4);
 INSERT INTO Is_drunk values( 9, 8);
 
-INSERT INTO Login values("AdminAlex","MdpAdmin1EBB"),
-("Admin_Alban","MdpAdmin2EBB"),
-("GuestAdmin","MdpAdmin2");
+INSERT INTO Login values(1,"AdminAlex","MdpAdmin1EBB"),
+(2,"Admin_Alban","MdpAdmin2EBB"),
+(3,"GuestAdmin","MdpAdmin2");
 

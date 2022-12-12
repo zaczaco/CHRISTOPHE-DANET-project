@@ -11,7 +11,7 @@ DROP TABLE if exists Login;
 
 CREATE TABLE Music(
    Id_Music INT,
-   Style VARCHAR(50),
+   Music_Style VARCHAR(50),
    Djs VARCHAR(50),
    PRIMARY KEY(Id_Music)
 );
@@ -37,8 +37,9 @@ CREATE TABLE Place(
 );
 
 CREATE TABLE Login(
-    username VARCHAR(50),
-    password VARCHAR(50)
+	 Login_id INT,
+    user_name VARCHAR(50),
+    pass_word VARCHAR(50)
 );
 
 CREATE TABLE Event_schedule(
