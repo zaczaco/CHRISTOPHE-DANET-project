@@ -141,6 +141,7 @@ main{
 .container {
   padding: 16px;
   margin: 30px;
+  background-image: url('../assets/fondparty.jpg');
 }
 
 /* Full-width input fields */
