@@ -4,7 +4,7 @@ module.exports = {
   async getOneUser(username) {
     try {
       let conn = await pool.getConnection();
-      let sql = "SELECT Login_id,user_name,user_email,user_role FROM users WHERE user_name = ? "; 
+      let sql = "SELECT Login_id,username,useremail,user_role FROM users WHERE username = ? "; 
       // must leave out the password+hash
       const [rows, fields] = await conn.execute(sql, [ username ]);
       conn.release();
@@ -23,12 +23,12 @@ module.exports = {
   async areValidCredentials(username, password) {
     try {
       let conn = await pool.getConnection();
-      let sql = "SELECT * FROM Login WHERE user_name = ? AND pass_word COLLATE utf8mb4_general_ci  = sha2(concat(user_created, ?), 224) COLLATE utf8mb4_general_ci "; 
+      let sql = "SELECT * FROM Login WHERE username = ? AND password COLLATE utf8mb4_general_ci  = sha2(concat(user_created, ?), 224) COLLATE utf8mb4_general_ci "; 
       // TODO: better salt+pw hash - COLLATE usually not needed
       const [rows, fields] = await conn.execute(sql, [username, password]);
       conn.release();
 
-      if (rows.length == 1 && rows[0].user_name === username) {
+      if (rows.length == 1 && rows[0].username === username) {
         return true;
       } else {
         return false;

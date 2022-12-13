@@ -1,10 +1,7 @@
-// utils/event.repository.js
 pool = require("../utils/db.js");
-// JS include = relative to CONTROLLERS 
-// VIEW include = relative to VIEWS
 module.exports = {
    
-    async getAllPlace(){ // TODO? move to brands.repository.js
+    async getAllPlace(){ 
         try {
             let conn = await pool.getConnection();
             let sql = "SELECT * FROM Place";
@@ -12,16 +9,28 @@ module.exports = {
             conn.release();
             return rows;
         }
-        catch (err) {
-            // TODO: log/send error ... 
+        catch (err) { 
             console.log(err);
-            throw err; // return false ???
+            throw err; 
+        }
+    },
+    async getAllDrinks(){ 
+        try {
+            let conn = await pool.getConnection();
+            let sql = "SELECT * FROM Drinks";
+            const [rows, fields] = await conn.execute(sql);
+            conn.release();
+            return rows;
+        }
+        catch (err) {
+            console.log(err);
+            throw err; 
         }
     },
     async getAllEvent_schedule(){ 
         try {
             let conn = await pool.getConnection();
-            let sql = "SELECT Id_Event_schedule,Name_event,Start_time,End_time,Price, P.Id_Place,Capacity,Name_place,City_place,country_place FROM Event_schedule E INNER JOIN Place P ON P.Id_Place = E.Id_Place";
+            let sql = "SELECT E.Id_Event_schedule, Name_event, Start_time, End_time, Price, P.Id_Place, Capacity, Name_place, City_place, country_place, style AS Music_style, djs AS DJ  FROM Event_schedule E INNER JOIN Place P ON P.Id_Place = E.Id_Place INNER JOIN Is_played IP ON IP.Id_Event_schedule=E.Id_Event_schedule INNER JOIN Music M ON M.Id_music=IP.Id_music";
             const [rows, fields] = await conn.execute(sql,);
             conn.release();
             console.log("EBB FETCHED: "+rows.length);
@@ -36,9 +45,6 @@ module.exports = {
     async getOneEvent_schedule(Event_scheduleId){ 
         try {
             let conn = await pool.getConnection();
-            // sql = "SELECT * FROM cars INNER JOIN brands ON car_brand=brand_id WHERE car_id = "+carId; 
-            // SQL INJECTION => !!!!ALWAYS!!!! sanitize user input!
-            // escape input (not very good) OR prepared statements (good) OR use orm (GOOD!)
             let sql = "SELECT * FROM Event_schedule WHERE Id_Event_schedule = '?'";
             const [rows, fields] = await conn.execute(sql, [ carId ]);
             conn.release();
@@ -59,7 +65,7 @@ module.exports = {
         try {
             let conn = await pool.getConnection();
             let sql = "DELETE FROM Event_schedule WHERE Name_event = ?";
-            const [okPacket, fields] = await conn.execute(sql, [ Event_scheduleId ]);  // affectedRows, insertId
+            const [okPacket, fields] = await conn.execute(sql, [ Event_scheduleId ]);  
             conn.release();
             console.log("DELETE "+JSON.stringify(okPacket));
             return okPacket.affectedRows;
@@ -74,7 +80,7 @@ module.exports = {
         try {202
             let conn = await pool.getConnection();
             let sql = "INSERT INTO Event_schedule VALUES (NULL, ?, ?, ?, ?, ?) ";
-            const [okPacket, fields] = await conn.execute(sql, [Name_event, Start_time, End_time, Price, 'EVENT']); // affectedRows, insertId
+            const [okPacket, fields] = await conn.execute(sql, [Name_event, Start_time, End_time, Price, 'EVENT']); 
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
             return okPacket.insertId;
@@ -87,7 +93,7 @@ module.exports = {
     async modifyOneEvent_schedule(Name_event, Start_time, End_time, Price){ 
         try {
             let conn = await pool.getConnection();
-            let sql = "UPDATE Event_schedule SET Name_event=?, Start_time=?, End_time=?, Price=? WHERE Id_Event_schedule=? "; // TODO: named parameters? :something
+            let sql = "UPDATE Event_schedule SET Name_event=?, Start_time=?, End_time=?, Price=? WHERE Id_Event_schedule=? "; 
             const [okPacket, fields] = await conn.execute(sql, 
                         [Name_event, Start_time, End_time, Price ]);
             conn.release();

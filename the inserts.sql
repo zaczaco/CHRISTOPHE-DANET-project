@@ -1,4 +1,3 @@
-
 INSERT INTO Place values(1, "Morrinson", "Club", 500, "budapest","Hongrie"),
 (2, "Pontoon", "Club", 300,"budapest","Hongrie"),
 (3, "ELLATOhaz", "Club", 650, "budapest","Hongrie"),
@@ -10,16 +9,16 @@ INSERT INTO Place values(1, "Morrinson", "Club", 500, "budapest","Hongrie"),
 (9, "Lock", "Club", 1100, "budapest","Hongrie"),
 (10, "BRKLN", "Club", 1120, "budapest","Hongrie");
 
-INSERT INTO Drinks values(1, "Vodka soda", 30, "vodka soda", "TRUE", 2200),
-(2, "Vodka redbull", 25.25, "Vodka redbull", "TRUE", 2600),
-(3, "Aperol spritz", 35.50, "Spritz,prosseco,perrier", "TRUE",4200),
-(4, "Gin tonik", 25.25, "Gin, indian tonic", "TRUE", 2950),
-(5, "white wine bottle", 75, "white wine", "TRUE", 8000),
-(6, "red wine bottle", 75, "red Wine", "TRUE", 8500),
-(7, "Beer", 50, "Beer", "TRUE", 800),
-(8, "Martini dry", 75, "wine", "TRUE", 8000),
-(9, "whisky", 5, "whisky", "TRUE", 2950),
-(10, "soda", 33 , "coca", "TRUE", 890);
+INSERT INTO Drinks values(1, "Vodka soda", 30, "vodka soda",TRUE, 2200),
+(2, "Vodka redbull", 25.25, "Vodka redbull", TRUE, 2600),
+(3, "Aperol spritz", 35.50, "Spritz,prosseco,perrier", TRUE,4200),
+(4, "Gin tonik", 25.25, "Gin, indian tonic", TRUE, 2950),
+(5, "white wine bottle", 75, "white wine", TRUE, 8000),
+(6, "red wine bottle", 75, "red Wine", TRUE, 8500),
+(7, "Beer", 50, "Beer", TRUE, 800),
+(8, "Martini dry", 75, "wine", TRUE, 8000),
+(9, "whisky", 5, "whisky", TRUE, 2950),
+(10, "soda", 33 , "coca", TRUE, 890);
 
 INSERT INTO Music values(1, "House techno", "DJ Albane");
 INSERT INTO Music values(2, "Hardcore techno", "DJ Zac");
@@ -104,7 +103,10 @@ INSERT INTO Is_drunk values( 9, 2);
 INSERT INTO Is_drunk values( 9, 4);
 INSERT INTO Is_drunk values( 9, 8);
 
-INSERT INTO Login values(1,"AdminAlex","MdpAdmin1EBB"),
-(2,"Admin_Alban","MdpAdmin2EBB"),
-(3,"GuestAdmin","MdpAdmin2");
+INSERT INTO Login values
+(1, "AdminAlex","MdpAdmin1EBB", "Admin", "Alex@admin.com" ),
+(2, "Admin_Alban","MdpAdmin2EBB","Admin", "Alban@admin.com"),
+(3, "Guest_unknown","Mdpguest","Guest", "unknown@guest.com");
+
+
 
