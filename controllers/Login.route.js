@@ -1,8 +1,8 @@
 // controllers/auth.route.js
 const express = require('express');
 const router = express.Router();
-const auth = require("../utils/users.auth");
-const userRepo = require("../utils/users.repository");
+const auth = require("../utils/user.auth");
+const userRepo = require("../utils/user.repository");
 
 // http://localhost:9000/auth
 router.get('/', (req, res) => res.render('auth_view', { extraContent: "" }) );

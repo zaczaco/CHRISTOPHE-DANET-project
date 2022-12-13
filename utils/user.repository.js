@@ -4,7 +4,7 @@ module.exports = {
   async getOneUser(username) {
     try {
       let conn = await pool.getConnection();
-      let sql = "SELECT Login_id,username,useremail,user_role FROM users WHERE username = ? "; 
+      let sql = "SELECT Login_id, username, useremail, user_role FROM users WHERE username = ? "; 
       // must leave out the password+hash
       const [rows, fields] = await conn.execute(sql, [ username ]);
       conn.release();

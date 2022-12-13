@@ -1,5 +1,5 @@
 const passport = require("passport");
-const usersRepo = require("../utils/users.repository.js");
+const usersRepo = require("../utils/user.repository.js");
 
 module.exports = {
   initialization(app) {

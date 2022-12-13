@@ -1,6 +1,15 @@
 pool = require("../utils/db.js");
 module.exports = {
-   
+    getBlankEvent_schedule(){ 
+        return {
+            "Id_Event_schedule": 0,
+            "Superviser": "XXXXX",
+            "Name_Event": "XXXX",
+            "Start_time": 0,
+            "End_time": 0,
+            "Price": 0
+        };
+    },
     async getAllPlace(){ 
         try {
             let conn = await pool.getConnection();

@@ -1,66 +1,66 @@
 // controllers/cars.route.js
 const express = require('express');
 const router = express.Router();
-const carRepo = require('../utils/cars.repository');
+const EventRepo = require('../utils/Id_Event_schedule.repository');
 
-router.get('/', carRootAction);
-router.get('/list', carListAction);
-router.get('/show/:carId', carShowAction);
-router.get('/del/:carId', carDelAction);
-router.get('/edit/:carId', carEditAction);
-router.post('/update/:carId', carUpdateAction);
+router.get('/', Event_scheduleRootAction);
+router.get('/list', Event_scheduleListAction);
+router.get('/show/:Id_Event_schedule', Event_scheduleShowAction);
+router.get('/del/:Id_Event_schedule', Event_scheduleDelAction);
+router.get('/edit/:Id_Event_schedule', Event_scheduleEditAction);
+router.post('/update/:Id_Event_schedule', Event_scheduleUpdateAction);
 
 // http://localhost:9000/cars
-function carRootAction(request, response) {
+function Event_scheduleRootAction(request, response) {
     //response.send("ROOT ACTION");
-    response.redirect("/cars/list");
+    response.redirect("/Id_Event_schedule/list");
 }
-async function carListAction(request, response) {
+async function Event_scheduleListAction(request, response) {
     // response.send("LIST ACTION");
-    var cars = await carRepo.getAllCars();
+    var Event = await EventRepo.getAllEvent_schedule();
     // console.log(cars);
     //var flashMessage = request.session.flashMessage; // express-flash ...
     //request.session.flashMessage = "";
     
-    response.render("cars_list", { "cars": cars});
+    response.render("Event_schedule_list", { "Event_schedule": Event});
 }
-async function carShowAction(request, response) {
+async function Event_scheduleShowAction(request, response) {
     // response.send("SHOW ACTION");
-    var oneCar = await carRepo.getOneCar(request.params.carId);
-    response.render("cars_show", { "oneCar": oneCar });
+    var oneEvent_schedule = await EventRepo.getOneEvent_schedule(request.params.Id_Event_schedule);
+    response.render("Event_schedule_show", { "One": oneEvent });
 }
-async function carEditAction(request, response) {
+async function Event_scheduleEditAction(request, response) {
     // response.send("EDIT ACTION");
-    var brands = await carRepo.getAllBrands();
-    var carId = request.params.carId;
-    if (carId!=="0")
-        var car = await carRepo.getOneCar(carId);
+    var brands = await EventRepo.getAllBrands();
+    var Id_Event_schedule = request.params.Id_Event_schedule;
+    if (Id_Event_schedule!=="0")
+        var Event_schedule = await EventRepo.getOneEvent_schedule(Id_Event_schedule);
     else
-        var car = carRepo.getBlankCar();
-    response.render("cars_edit", { "oneCar": car, "brands": brands });
+        var Event = EventRepo.getBlankEvent_schedule();
+    response.render("Event_schedule_edit", { "oneEvent_schedule": Event_schedule });
 }
-async function carDelAction(request, response) {
+async function Event_scheduleDelAction(request, response) {
     // response.send("DEL ACTION");
     // TODO: remove extras for car, unless the car cannot be removed!!!
-    var numRows = await carRepo.delOneCar(request.params.carId);
+    var numRows = await EventRepo.delOneEvent_schedule(request.params.Id_Event_schedule);
     request.session.flashMessage = "ROWS DELETED: "+numRows;
-    response.redirect("/cars/list");
+    response.redirect("/Event_schedule/list");
 }
-async function carUpdateAction(request, response) {
+async function Event_scheduleUpdateAction(request, response) {
     // response.send("UPDATE ACTION");
-    var carId = request.params.carId;
-    if (carId==="0") carId = await carRepo.addOneCar(request.body.car_brand);
+    var Id_Event_schedule = request.params.Id_Event_schedule;
+    if (Id_Event_schedule==="0") Id_Event_schedule = await EventRepo.addOneEvent_schedule(request.body.Nmae_event);
 
-    var isFancy = request.body.car_isFancy === undefined ? 0 : 1; 
-    var numRows = await carRepo.editOneCar(carId, 
-        request.body.car_brand, 
-        request.body.car_name, 
-        request.body.car_baseprice, 
+    var isFancy = request.body.Event_isFancy === undefined ? 0 : 1; 
+    var numRows = await EventRepo.editOneEvent_schedule(Id_Event_schedule, 
+        request.body.Event_brand, 
+        request.body.Event_name, 
+        request.body.Event_baseprice, 
         isFancy, 
-        request.body.car_realPrice);
+        request.body.Event_realPrice);
 
     request.session.flashMessage = "ROWS UPDATED: "+numRows;
-    response.redirect("/cars/list");
+    response.redirect("/Event_schedule/list");
 }
 
 module.exports = router;

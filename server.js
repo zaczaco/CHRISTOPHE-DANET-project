@@ -7,7 +7,7 @@ npm install mariadb express express-session body-parser passport dotenv ejs mysq
 edit/copy files, then ... node server.js 
 */
 
-
+/*
 const mariadb = require("mariadb");
 const pool = mariadb.createPool({
     host: "localhost", user: "root", password: "", database: "carsdb"
@@ -17,18 +17,18 @@ pool.getConnection().then(function(conn){
     conn.query("SELECT * FROM cars").then(function(rows){ delete rows.meta; console.log(rows); process.exit(); });
 });
 return;
+*/
 
-
+/*
 const mysql = require('mysql2/promise');
 const conn = mysql.createConnection({
     host:'localhost', user: 'root', database: 'EBB', password: '', debug: false
 });
 conn.then(function(conn) {
-    conn.execute('SELECT * FROM users').then(function(result){ const [rows, fields]=result; console.log(rows); });
-    conn.execute('SELECT * FROM cars').then(function(result){ const [rows, fields]=result; console.log(rows); process.exit(); });
+    conn.execute('SELECT * FROM Event_schedule').then(function(result){ const [rows, fields]=result; console.log(rows); process.exit(); });
 });    
 return;
-
+*/
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -60,11 +60,11 @@ app.use(session({
     resave: false
 }));
 
-const auth = require("./utils/users.auth");
+const auth = require("./utils/user.auth");
 auth.initialization(app);
 
 // app.use(routeBase, callback);
 app.use("/static", express.static(__dirname + '/static'));
 app.use("/hello", require("./controllers/hello.route"));
-app.use("/cars", require("./controllers/cars.route"));
-app.use("/auth", require("./controllers/auth.route"));
+//app.use("/cars", require("./controllers/cars.route"));
+//app.use("/auth", require("./controllers/auth.route"));
