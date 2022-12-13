@@ -90,6 +90,34 @@ module.exports = {
             throw err; 
         }
     },
+    async addOneDrinks(Id_Drinks){ 
+        try {202
+            let conn = await pool.getConnection();
+            let sql = "INSERT INTO Drinks VALUES (NULL, ?, ?, ?, ?, ?, ?) ";
+            const [okPacket, fields] = await conn.execute(sql, [Name_drink, Volume, Ingredients, Alcohol, Price, 'Drink']); 
+            conn.release();
+            console.log("INSERT "+JSON.stringify(okPacket));
+            return okPacket.insertId;
+        }
+        catch (err) {
+            console.log(err);
+            throw err; 
+        }
+    },
+    async AddOneSong(Id_Drinks){ 
+        try {202
+            let conn = await pool.getConnection();
+            let sql = "INSERT INTO Music VALUES (NULL, ?, ?) ";
+            const [okPacket, fields] = await conn.execute(sql, [Style, Djs, 'Music']); 
+            conn.release();
+            console.log("INSERT "+JSON.stringify(okPacket));
+            return okPacket.insertId;
+        }
+        catch (err) {
+            console.log(err);
+            throw err; 
+        }
+    },
     async modifyOneEvent_schedule(Name_event, Start_time, End_time, Price){ 
         try {
             let conn = await pool.getConnection();
