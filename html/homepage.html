@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+    <link rel="stylesheet" href = "../style/stylepage.css">
+</head>
+<body class="light-theme">
+    <div class="header" id="myHeader">
+        <img src = "../assets/budablogwhite.png"
+            srcset="../assets/budablogwhite.png 320w,
+                    ../assets/budablogwhite.png 640w"
+                    sizes="10vw"
+            alt="logo">
+
+        <div class="menu">
+            <a href="homepage.html">HOME</a>
+            <a href="events.html">EVENTS</a>
+            <a href="schedule.html">SCHEDULE</a>
+            <a href="clubs.html">CLUBS</a>  
+            <a href="activity.html">ACTIVITY</a>  
+            <a href="budapest.html">BUDAPEST</a>  
+            <a href="about.html">ABOUT</a>  
+            <div>
+                <button class="btn"></button>
+            </div> 
+        </div>
+        
+    </div>
+    
+    <form action="action_page.php">
+        <div class="container">
+          <h1>Register</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr>
+      
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+          <hr>
+      
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+          <button type="submit" class="registerbtn">Register</button>
+        </div>
+      
+        <div class="container signin">
+          <p>Already have an account? <a href="#">Sign in</a>.</p>
+        </div>
+      </form>
+      
+        
+
+    </div>
+    
+    <main>
+        <p>
+            oui
+        </p>
+
+        <p>
+            non
+        </p>
+
+    </main>
+    <script src="../js/javascript.js"></script>
+    <noscript>Vous devez avoir java Script pour charger le site en entier</noscript>
+</body>
+</html>
