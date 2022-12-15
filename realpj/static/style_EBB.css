@@ -32,6 +32,7 @@ body{
     background-image: var(--backgroundimage);
     background-repeat:no-repeat;
     background-position: 0% 50%;
+    height: 3000px;
 }
 
 /* Style the header */
@@ -69,9 +70,7 @@ body{
     height: 120px;
 }
 
-main{
-    height: 2000px;
-}
+
 
 .menu{
     display: flex;
@@ -189,4 +188,33 @@ a {
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+
+
+main table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+main table td, main table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+main table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+main table tr:hover {
+  background-color: #ddd;
+}
+
+main table thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
 }
