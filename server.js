@@ -54,7 +54,7 @@ app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
 
 const session = require("express-session");
 app.use(session({
-    secret: "SecretRandomStringDskghadslkghdlkghdghaksdghdksh",
+    secret: "SecretRandomString",
     saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day in msec
     resave: false

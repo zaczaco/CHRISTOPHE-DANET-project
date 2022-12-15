@@ -34,7 +34,7 @@ async function Event_scheduleEditAction(request, response) {
     var brands = await EventRepo.getAllBrands();
     var Id_Event_schedule = request.params.Id_Event_schedule;
     if (Id_Event_schedule!=="0")
-        var Event_schedule = await EventRepo.getOneEvent_schedule(Id_Event_schedule);
+        var Event = await EventRepo.getOneEvent_schedule(Id_Event_schedule);
     else
         var Event = EventRepo.getBlankEvent_schedule();
     response.render("Event_schedule_edit", { "oneEvent_schedule": Event_schedule });
@@ -49,7 +49,7 @@ async function Event_scheduleDelAction(request, response) {
 async function Event_scheduleUpdateAction(request, response) {
     // response.send("UPDATE ACTION");
     var Id_Event_schedule = request.params.Id_Event_schedule;
-    if (Id_Event_schedule==="0") Id_Event_schedule = await EventRepo.addOneEvent_schedule(request.body.Nmae_event);
+    if (Id_Event_schedule==="0") Id_Event_schedule = await EventRepo.addOneEvent_schedule(request.body.Name_event);
 
     var isFancy = request.body.Event_isFancy === undefined ? 0 : 1; 
     var numRows = await EventRepo.editOneEvent_schedule(Id_Event_schedule, 
