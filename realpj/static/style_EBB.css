@@ -1,0 +1,192 @@
+:root {
+    --turquoise: #165a72;
+
+    --green: #00ff002f;
+    --white: #f2e3e3;
+    --black: #000000;
+    --lightgrey: #bdbbbb;
+    --darkgrey: #232323;
+    --lightgreen: #91a410;
+    --red: #fe0f0f4e;
+    --verylightgrey: #e3dfdf;
+    --lightblue: #87c5c8;
+    --darkblue: #0d286c;
+
+    --backgroundimagelight: url('/static/backgroundpicturehome.jpg');
+    --backgroundimagedark: url('/static/backgroundpicturehomedark.jpg');
+    --buttonlight: url('/static/lightmodebutton.png');
+    --buttondark: url('/static/darkmodebutton.png');
+
+  }
+
+main{
+    background-color: var(--backgroundmain);
+    opacity: 0.8;
+    margin-top: 350px;
+    margin-right: 40px;
+    margin-left: 40px;
+    position: relative;
+}
+
+body{
+    background-image: var(--backgroundimage);
+    background-repeat:no-repeat;
+    background-position: 0% 50%;
+}
+
+/* Style the header */
+.header {
+    background: transparent;
+    color: #f1f1f1;
+    display: flex;
+    margin: 0;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.header:hover{
+    background: var(--headband);
+    
+}
+  
+/* Page content */
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--headband);
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
+}
+
+.header img {
+    width: 120px;
+    height: 120px;
+}
+
+main{
+    height: 2000px;
+}
+
+.menu{
+    display: flex;
+
+}
+
+.menu a{
+    text-decoration: none;
+    margin-top: 50px;
+    margin-left: 15%;
+    font-size: 1em;
+    text-align: center;
+    color: white;
+}
+
+.menu a:hover{
+    font-weight: bold;
+}
+
+.light-theme {
+    --headband: var(--turquoise);
+    --backgroundimage: var(--backgroundimagelight);
+    --buttonswitchinv: var(--buttondark);
+    --backgroundmain: var(--white);
+    --buttonswitch: var(--buttonlight);
+
+    
+
+  }
+
+.dark-theme {
+    --headband: var(--darkgrey);
+    --backgroundimage: var(--backgroundimagedark);
+    --btnswitch: var(--lightblue);
+    --buttonswitchinv: var(--buttonlight);
+    --buttonswitch: var(--buttondark);
+    --backgroundmain: var(--black);
+
+
+
+
+}
+
+.btn {
+    right: 20px;
+    top: 30px;
+    position: absolute;
+    border:none;
+    width: 40px;
+    height:65px;
+    background-size: cover;
+    background-color: transparent;
+    border-color: transparent;
+    background-image: var(--buttonswitch);
+}
+
+.btn:hover {
+    background-image: var(--buttonswitchinv);
+}
+
+
+
+
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  margin: 30px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}

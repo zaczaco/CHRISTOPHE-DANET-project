@@ -1,0 +1,18 @@
+<%- include("partial_headers.ejs"); %>
+
+<h1>Single car Datasheet</h1>
+
+<p><a href='/Event_schedule/list'>Back to the list</a></p>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr><td>ID:</td><td> <%= oneCar.car_id %> </td></tr>
+    <tr><td>Brand:</td><td> <%= oneCar.car_brand %> <%= oneCar.brand_name %> </td></tr>
+    <tr><td>Model:</td><td> <%= oneCar.car_name %> </td></tr>
+    <tr><td>Baseprice:</td><td> <%= oneCar.car_baseprice %> </td></tr>
+    <tr><td>Fancy?</td>
+        <td> <%= oneCar.car_isFancy %> <%= oneCar.car_isFancy ? "YES" : "NO" %> </td></tr>
+    <tr><td>Total price:</td><td> <%= oneCar.car_realPrice %> </td></tr>
+</table>
+
+</body>
+</html>

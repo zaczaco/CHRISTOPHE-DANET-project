@@ -1,0 +1,20 @@
+
+<%- include('partial_header.ejs'); %>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <td>Name Event</td>
+        <td>Place</td>
+        <td>Start time</td>
+        <td>More</td>
+    </tr>
+    
+<% for (var e of events) { %>
+    <tr>
+        <td><%= e.Name_event %></td>
+        <td><%= e.Name_place %></td>
+        <td><%= e.Start_time %></td>
+        <td><a href='/user/event/<%= e.Id_Event_schedule %>'>More informations</a></td>
+    </tr>
+<% } %>
+</table>
