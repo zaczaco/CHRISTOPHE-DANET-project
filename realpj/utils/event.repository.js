@@ -55,20 +55,57 @@ module.exports = {
     async getOneEvent(Event_scheduleId){ 
         try {
             let conn = await pool.getConnection();
-            let sql = "SELECT * FROM Event_schedule WHERE Id_Event_schedule = '?'";
-            const [rows, fields] = await conn.execute(sql, [ carId ]);
+            let sql = "SELECT Name_event, Superviser, Start_time, End_time, E.Price, Name_place, Capacity, City_place FROM Event_schedule E INNER JOIN Place ON E.Id_Place=Place.Id_Place WHERE E.Id_Event_schedule = ?";
+            const [rows, fields] = await conn.execute(sql, [ Event_scheduleId ]);
             conn.release();
             console.log("EBB FETCHED: "+rows.length);
-            if (rows.length == 1) {
-                return rows[0];
-            } else {
-                return false;
-            }
+            console.log(Event_scheduleId);
+            console.log(rows)
+            return rows[0];
+            
         }
         catch (err) {
             console.log(err);
             throw err; 
         }
+    },
+
+
+    async getDrinks_of_an_event(Event_scheduleId){
+
+        try {
+            let conn = await pool.getConnection();
+            let sql = "SELECT Name_drink FROM Drinks INNER JOIN Is_drunk ON Is_drunk.Id_Drinks=Drinks.Id_Drinks WHERE Is_drunk.Id_Event_schedule = ?";
+            const [rows, fields] = await conn.execute(sql, [ Event_scheduleId ]);
+            conn.release();
+            console.log("EBB FETCHED: "+rows.length);
+            return rows;
+
+        }
+        catch (err) {
+            console.log(err);
+            throw err; 
+        }
+
+    },
+
+    async getMusic_of_an_event(Event_scheduleId){
+
+        try {
+            let conn = await pool.getConnection();
+            let sql = "SELECT Style, Djs FROM Music INNER JOIN Is_played ON Is_played.Id_Music=Music.Id_Music WHERE Is_played.Id_Event_schedule = ?";
+            const [rows, fields] = await conn.execute(sql, [ Event_scheduleId ]);
+            conn.release();
+            console.log("EBB FETCHED: "+rows.length);
+                console.log('test1')
+                console.log(rows)
+                return rows;
+        }
+        catch (err) {
+            console.log(err);
+            throw err; 
+        }
+
     },
 
     async delOneEvent_schedule(Event_scheduleId){ 

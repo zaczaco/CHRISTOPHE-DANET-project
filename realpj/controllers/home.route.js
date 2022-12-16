@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // http://localhost:9000/hello
-router.get('/', (req, res) => res.render('Log_in_view'));
+router.get('/', (req, res) => res.render('home_view'));
 
 // http://localhost:9000/hello/world
 router.get('/world', (req, res) => {

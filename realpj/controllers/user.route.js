@@ -17,9 +17,20 @@ async function list(request, response){
 
 async function eventinfo(request, response){
 
+    console.log(request.params.id_event);
     ev = await EventRepo.getOneEvent(request.params.id_event);
+    drinks = await EventRepo.getDrinks_of_an_event(request.params.id_event);
+    Music = await EventRepo.getMusic_of_an_event(request.params.id_event);
+    console.log('tets');
+    console.log(ev);
+    console.log(drinks);
+    console.log(Music);
+
+    response.render('Event_info', {'e': ev, 'Drinks':drinks, 'Musics':Music})
 
 }
+
+
 
 
 
