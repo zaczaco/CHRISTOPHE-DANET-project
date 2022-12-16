@@ -62,7 +62,7 @@ auth.initialization(app);
 // app.use(routeBase, callback);
 app.use("/static", express.static(__dirname + '/static'));
 app.use("/hello", require("./controllers/home.route"));
-app.use("/Id_Event_schedule",require("./controllers/Event.route"));
+//app.use("/Id_Event_schedule",require("./controllers/Event.route"));
 //app.use("/cars", require("./controllers/cars.route"));
 app.use("/auth", require("./controllers/Login.route"));
 app.use('/user', require('./controllers/user.route.js'));
