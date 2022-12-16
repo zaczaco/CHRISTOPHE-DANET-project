@@ -12,10 +12,10 @@
     --lightblue: #87c5c8;
     --darkblue: #0d286c;
 
-    --backgroundimagelight: url('/static/backgroundpicturehome.jpg');
-    --backgroundimagedark: url('/static/backgroundpicturehomedark.jpg');
-    --buttonlight: url('/static/lightmodebutton.png');
-    --buttondark: url('/static/darkmodebutton.png');
+    --backgroundimagelight: url('backgroundpicturehome.jpg');
+    --backgroundimagedark: url('static/backgroundpicturehomedark.jpg');
+    --buttonlight: url('lightmodebutton.png');
+    --buttondark: url('darkmodebutton.png');
 
   }
 
@@ -217,4 +217,9 @@ main table thead {
   text-align: left;
   background-color: #04AA6D;
   color: white;
+}
+
+
+.mainhome{
+  background-image: url('homebackbackground.png');
 }
