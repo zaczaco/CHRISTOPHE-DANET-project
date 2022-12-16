@@ -219,7 +219,10 @@ main table thead {
   color: white;
 }
 
+.homeimage{
+  display: block;
+  width: 100%;
+  margin: auto;
 
-.mainhome{
-  background-image: url('homebackbackground.png');
 }
+
