@@ -1,39 +1,33 @@
 
 <%- include('partial_header.ejs'); %>
 
-<form action="/auth/log_in_finish" method="post">
-    <div class="container">
-      <h1>Register</h1>
-      <p>Please fill in this form to log_in to your account.</p>
-      <hr>
-  
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="user_email" id="email" required>
-  
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" id="password" required>
-  
-
-      <button type="submit" class="registerbtn">Register</button>
-    </div>
-  
-    
-  </form>
-  
-    
-
-</div>
-
 <main>
-    <p>
-        Ziziii
-    </p>
 
-    <p>
-        bite de cheval
-    </p>
+  <form action="/auth/log_in_finish" method="post">
+      <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to log_in to your account.</p>
+        <hr>
+    
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="user_email" id="email" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    
 
+        <button type="submit" class="registerbtn">Register</button>
+      </div>
+    
+      
+    </form>
+    
+      
+
+  </div>
 </main>
+
+
 <script src="../static/javascript.js"></script>
 <noscript>Vous devez avoir java Script pour charger le site en entier</noscript>
 </body>
