@@ -59,7 +59,6 @@ module.exports = {
             const [rows, fields] = await conn.execute(sql, [ Event_scheduleId ]);
             conn.release();
             console.log("EBB FETCHED: "+rows.length);
-            console.log(Event_scheduleId);
             console.log(rows)
             return rows[0];
             
